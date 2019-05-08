@@ -51,7 +51,19 @@ html {
   .ftco-social li {
     transition: background 1s ease;
   }
-
+  html {
+    overflow: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
 
 
   .ftco-social li a:hover {
@@ -510,8 +522,8 @@ pre {
   margin-left: -15px; }
 
 .no-gutters {
-  margin-right: 0;
-  margin-left: 0; }
+  margin-right: 5%;
+  margin-left: 5%; }
   .no-gutters > .col,
   .no-gutters > [class*="col-"] {
     padding-right: 0;
@@ -4342,7 +4354,83 @@ input[type="button"].btn-block {
     background-color: #1b1e21;
     border-color: #1b1e21; }
 
+.projimg {
+  margin-top: 3.5%; 
+  width:75%;
+}
+
+  .btn { /* just for this demo. */
+      margin-top: 5px;
+  }
+  .btn-arrow-right,
+  .btn-arrow-left {
+      position: relative;
+      outline: none !important;
+      border:none;
+      cursor: pointer;
+      background: #BC93A7;
+      color: white;
+      padding-left: 18px;
+      padding-right: 18px;
+  }
+  .btn-arrow-right {
+      padding-left: 36px;
+  }
+  .btn-arrow-left {
+      padding-right: 36px;
+  }
+  .btn-arrow-right:before,
+  .btn-arrow-right:after,
+  .btn-arrow-left:before,
+  .btn-arrow-left:after { /* make two squares (before and after), looking similar to the button */
+      content:"";
+      position: absolute;
+      top: 5px; /* move it down because of rounded corners */
+      width: 22px; /* same as height */
+      height: 19px; /* button_outer_height / sqrt(2) */
+      background: inherit; /* use parent background */
+      border: inherit; /* use parent border */
+      border-left-color: transparent; /* hide left border */
+      border-bottom-color: transparent; /* hide bottom border */
+      border-radius: 0px 4px 0px 0px; /* round arrow corner, the shorthand property doesn't accept "inherit" so it is set to 4px */
+      -webkit-border-radius: 0px 4px 0px 0px;
+      -moz-border-radius: 0px 4px 0px 0px;
+  }
+  .btn-arrow-right:before,
+  .btn-arrow-right:after {
+      transform: rotate(45deg); /* rotate right arrow squares 45 deg to point right */
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+  }
+  .btn-arrow-left:before,
+  .btn-arrow-left:after {
+      transform: rotate(225deg); /* rotate left arrow squares 225 deg to point left */
+      -webkit-transform: rotate(225deg);
+      -moz-transform: rotate(225deg);
+      -o-transform: rotate(225deg);
+      -ms-transform: rotate(225deg);
+  }
+  .btn-arrow-right:before,
+  .btn-arrow-left:before { /* align the "before" square to the left */
+      left: -11px;
+  }
+  .btn-arrow-right:after,
+  .btn-arrow-left:after { /* align the "after" square to the right */
+      right: -11px;
+  }
+  .btn-arrow-right:after,
+  .btn-arrow-left:before { /* bring arrow pointers to front */
+      z-index: 1;
+  }
+  .btn-arrow-right:before,
+  .btn-arrow-left:after { /* hide arrow tails background */
+      background-color: white;
+  }
+
 .close {
+
   float: right;
   font-size: 1.5rem;
   font-weight: 700;
@@ -7308,11 +7396,145 @@ body {
       position: fixed; }
     body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
       top: 0;
-      -moz-transform: translateX(270px);
-      -webkit-transform: translateX(270px);
-      -ms-transform: translateX(270px);
-      -o-transform: translateX(270px);
-      transform: translateX(270px); }
+      -moz-transform: translateX(-270px);
+      -webkit-transform: translateX(-270px);
+      -ms-transform: translateX(-270px);
+      -o-transform: translateX(-270px);
+      transform: translateX(-270px); }
+
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        /* Compensate for excess margin on outer gallery flex items */
+        margin: -1rem -1rem;
+      }
+      
+      .gallery-item {
+        /* Minimum width of 24rem and grow to fit available space */
+        flex: 1 0 24rem;
+        /* Margin value should be half of grid-gap value as margins on flex items don't collapse */
+        margin: 1rem;
+        box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+      }
+      
+      .gallery-image {
+        display: block;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 400ms ease-out;
+      }
+      
+      .gallery-image:hover {
+        transform: scale(1.15);
+      }
+      
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 100000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: white; /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  -webkit-user-drag: none;
+  outline: none;
+  user-select: none;
+  max-width: 700px;
+  transition: all 1s ease;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #a0138e;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.5s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+  .projimg {
+    width: 100%;
+  }
+}
+
+      /*
+      
+      The following rule will only run if your browser supports CSS grid.
+      
+      Remove or comment-out the code block below to see how the browser will fall-back to flexbox styling. 
+      
+      */
+      
+      @supports (display: grid) {
+        .gallery {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+          grid-gap: 2rem;
+        }
+      
+        .gallery,
+        .gallery-item {
+          margin: 0;
+        }
+      }
 
 a {
   -webkit-transition: .3s all ease;
@@ -7345,10 +7567,10 @@ h1, h2, h3, h4, h5,
   position: fixed;
   bottom: 0;
   top: 0;
-  left: 0;
+  right: 0;
   overflow-y: scroll;
   z-index: 1001;
-  background: rgba(0, 0, 0, 0.04);
+  background: linear-gradient(rgb(255, 255, 255), rgb(232, 232, 232)) !important;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
@@ -7360,11 +7582,11 @@ h1, h2, h3, h4, h5,
   @media (max-width: 991.98px) {
     #colorlib-aside {
       width: 270px;
-      -moz-transform: translateX(-270px);
-      -webkit-transform: translateX(-270px);
-      -ms-transform: translateX(-270px);
-      -o-transform: translateX(-270px);
-      transform: translateX(-270px);
+      -moz-transform: translateX(270px);
+      -webkit-transform: translateX(270px);
+      -ms-transform: translateX(270px);
+      -o-transform: translateX(270px);
+      transform: translateX(270px);
       padding-top: 2em;
       background: rgba(0, 0, 0, 0.04); } }
   #colorlib-aside #colorlib-logo {
@@ -7477,7 +7699,9 @@ h1, h2, h3, h4, h5,
   transition: all 0.5s ease; }
   @media (min-width: 992px) {
     #colorlib-main {
-      width: 75%; } }
+      width: 75%; 
+      margin-right: 25%;
+    } }
 
 .colorlib-nav-toggle {
   cursor: pointer;
@@ -7508,7 +7732,7 @@ h1, h2, h3, h4, h5,
       height: 2px;
       background: #000000;
       position: absolute;
-      left: 0;
+      right: 0;
       -moz-transition: all 0.2s ease;
       -o-transition: all 0.2s ease;
       -webkit-transition: all 0.2s ease;
@@ -7562,7 +7786,7 @@ h1, h2, h3, h4, h5,
 
 .colorlib-nav-toggle {
   position: fixed;
-  left: -12px;
+  right: -12px;
   top: 0px;
   z-index: 9999;
   cursor: pointer;
@@ -7880,17 +8104,17 @@ h1, h2, h3, h4, h5,
 
 .btn {
   cursor: pointer;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  border-radius: 30px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  border-radius: 15px;
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }
   .btn:hover, .btn:active, .btn:focus {
     outline: none; }
   .btn.btn-primary {
-    background: #a0138e;
-    border: 1px solid #a0138e;
+    background: #BC93A7;
+    border: 1px solid #BC93A7;
     color: #fff; }
     .btn.btn-primary:hover {
       border: 1px solid #a0138e;
@@ -8054,7 +8278,7 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 14px;
-  background: #132238;
+  background: #BC93A7;
   padding: 6em 0; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
@@ -8085,7 +8309,7 @@ textarea.form-control {
     color: #000000; }
   .ftco-footer .categories li {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 10px 0; }
+     }
     .ftco-footer .categories li a {
       color: rgba(255, 255, 255, 0.5) !important; }
       .ftco-footer .categories li a span {
