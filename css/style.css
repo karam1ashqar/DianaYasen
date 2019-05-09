@@ -2063,6 +2063,11 @@ a.btn.disabled,
 fieldset:disabled a.btn {
   pointer-events: none; }
 
+button a {
+  color:white;
+}
+
+
 .btn-primary {
   color: #212529;
   background-color: #78d5ef;
