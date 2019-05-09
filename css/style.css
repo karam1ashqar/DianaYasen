@@ -908,6 +908,20 @@ pre {
   .offset-sm-11 {
     margin-left: 91.66667%; } }
 
+    .frame {
+      text-align: center;
+      margin: 0 auto
+    }
+
+@media (max-width: 670px) {
+  iframe {
+    width: 310px;
+    padding: 20px;
+    display: block;
+    margin: 20px auto
+  }
+}
+
 @media (min-width: 768px) {
   .col-md {
     -ms-flex-preferred-size: 0;

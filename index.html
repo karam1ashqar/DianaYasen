@@ -8,8 +8,6 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
 
-		<link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
-
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
     
@@ -22,13 +20,13 @@
     <link rel="stylesheet" href="css/ionicons.min.css">
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-
     
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
 		<link rel="stylesheet" href="css/style.css">
 		
+    <link rel="stylesheet" href="feed/slick.css">
+    <link rel="stylesheet" href="feed/slick-theme.css">
   </head>
   <body>
 
@@ -83,10 +81,10 @@
 			</div>
 
 					<section class="ftco-section-2">
-							<div class="container" style="text-align: center;  margin-top:2%; margin-bottom: 2%;">
+							<div class="frame container" style="text-align: center;  margin-top:2%; margin-bottom: 2%;">
 									<iframe width="640" height="360" src="https://www.youtube.com/embed/PfKXpEeBRi0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
+                  <div id="instafeed"></div>
 		
 								</section>
 <br>
@@ -146,13 +144,70 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
+  <script src="feed/instafeed.min.js"></script>
+  <script src="feed/slick.min.js"></script>
+
+  <script type="text/javascript">
+    var userFeed = new Instafeed({
+        get: 'user',
+        userId: 4541850605,
+        accessToken: '4541850605.1677ed0.455de6658de74b739e17a5e0d898b48d',
+        template: '<img src="{{image}}" />',
+        after: function() {
+    
+    $('#instafeed').slick({
+        autoplay: true,
+        rtl: true,
+        dots: true,
+        slidesToShow: 3,
+        responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2
+              }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1
+     }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+      })
+  },
+
+    });
+    userFeed.run();
 
 
+</script>
+
+<style>
+  /* the slides */
+  .slick-slide {
+    margin-left:27px;
+  }
+
+  /* the parent */
+  .slick-list {
+    margin-left:-27px;
+  }
+
+</style>
 
   </body>
 </html>
