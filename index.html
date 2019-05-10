@@ -33,7 +33,7 @@
 	<div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-				<h1 id="colorlib-logo"><a href="index.html">דיאנה</a></h1>
+				<h1 id="colorlib-logo"><a href="index.html">דיאנה יאסין</a></h1>
 				<nav id="colorlib-main-menu" role="navigation">
 						<ul>
 								<li class="colorlib-active"><a href="index.html">בית</a></li>
@@ -45,6 +45,7 @@
 						<ul>
 								<li><a target="_blank" href="https://m.facebook.com/Diana-yasen-207269873147611/"><i class="icon-facebook"></i></a></li>
 								<li><a target="_blank" href="https://www.instagram.com/diana_yasen97/"><i class="icon-instagram"></i></a></li>
+								
 		
 							</ul>
 							<p>האתר נבנה ע"י <a target="_blank" href="https://www.tatwertech.com"><img height="40px" src="images/developedby.png"></a>
@@ -61,7 +62,7 @@
 						<div class="desc" style="font-weight: 800">
 							<h2 style="color:rgba(0, 0, 0, 0.8)" class="subheading">היי קוראים לי</h2>
 							<h1 class="mb-4">דיאנה יאסין</h1>
-							<p style="color:rgba(0, 0, 0, 0.8)" class="mb-4">הנדסאית עיצוב גרפיקה, אפליקציות ומדיה חדשה מוזמנים ליצור איתי קשר היום
+							<p style="color:rgba(0, 0, 0, 0.8)" class="mb-4">הנדסאית עיצוב גרפיקה, אפליקציות ומדיה חדשה מוזמנים ליצור איתי קשר 
 
 								</p>
 							<button class="btn btn-primary" ><p style="margin:3px"><a style="color:rgba(0, 0, 0, 0.8)" href="projects.html">עבודות שלי</a>&nbsp;<span class="ion-ios-arrow-back"></span></p></button>
@@ -69,11 +70,10 @@
 						<ul class="ftco-social mt-2">
 							<li class="ftco-animate"><a target="_blank" href="https://m.facebook.com/Diana-yasen-207269873147611/"><span class="icon-facebook"></span></a></li>
 							<li class="ftco-animate"><a target="_blank" href="https://www.instagram.com/diana_yasen97"><span class="icon-instagram"></span></a></li>
+							<li class="ftco-animate"><a target="_blank" href="tel://0503777099"><span class="icon-phone"></span></a></li>
+							<li class="ftco-animate"><a target="_blank" href="mailto:Dyana.1997.97@gmail.com"><span class="icon-envelope"></span></a></li>
 
-						</ul>
-
-						<p style="color:rgba(0, 0, 0, 0.8); font-weight:700">Dyana.1997.97@gmail.com<br>050-377-7099</p>
-						
+						</ul>						
 					</div>
 					
 				</div>
@@ -82,7 +82,6 @@
 
 					<section class="ftco-section-2">
 							<div class="frame container" style="text-align: center;  margin-top:2%; margin-bottom: 2%;">
-									<iframe width="640" height="360" src="https://www.youtube.com/embed/PfKXpEeBRi0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                   <div id="instafeed"></div>
 		
@@ -158,9 +157,12 @@
         after: function() {
     
     $('#instafeed').slick({
-        autoplay: true,
+				autoplay: true,
+				adaptiveHeight: false,
         rtl: true,
-        dots: true,
+				dots: true,
+				speed: 150,
+				variableWidth: true,
         slidesToShow: 3,
         responsive: [
     {
@@ -205,7 +207,19 @@
   /* the parent */
   .slick-list {
     margin-left:-27px;
-  }
+	}
+	.slick-slide {
+	 height:auto;
+	 width: auto;
+
+}
+
+.slick-slide img {
+	 width: auto !important;
+}
+.ion-ios-arrow-back {
+	color:black
+}
 
 </style>
 
